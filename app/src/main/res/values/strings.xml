@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Servisin Saja V2</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_maps2">MapsActivity2</string>
+
+    <string-array name="merk_array">
+        <item>Pilih Item</item>
+        <item>Polytron</item>
+        <item>Lg</item>
+        <item>Philips</item>
+        <item>Samsung</item>
+        <item>Changhoa</item>
+        <item>Sony</item>
+        <item>Panasonic</item>
+
+    </string-array>
+</resources>
