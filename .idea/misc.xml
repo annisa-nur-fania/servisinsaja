@@ -8,16 +8,30 @@
         <entry key="..\:/ServisinSajaV2/app/src/main/res/drawable/custome3.xml" value="0.1" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/drawable/custome4.xml" value="0.1725" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/drawable/custome5.xml" value="0.169" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/drawable/ic_profil.xml" value="0.1335" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_detail_tv.xml" value="0.22" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_detail_tv2.xml" value="0.15806159420289856" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_form_mesin_cuci.xml" value="0.16354166666666667" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_form_mobil.xml" value="0.14947916666666666" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_form_tv.xml" value="0.14666666666666667" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_list.xml" value="0.1" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_list_mobil.xml" value="0.12952898550724637" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_login.xml" value="0.4466666666666667" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_registrasi.xml" value="0.1" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_reset_password.xml" value="0.14666666666666667" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_slide_adapter.xml" value="0.1" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_splash_screen.xml" value="0.16666666666666666" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/activity_user.xml" value="0.16666666666666666" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/fragment_home.xml" value="0.32708333333333334" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/fragment_profil.xml" value="0.3333333333333333" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/item_cardview.xml" value="0.22" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/item_gridview.xml" value="0.1" />
         <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/item_row_servis.xml" value="0.22" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/layout/rv_radiobutton.xml" value="0.16666666666666666" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/menu/button_nav_menu.xml" value="0.16354166666666667" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1135" />
+        <entry key="..\:/ServisinSajaV2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1135" />
       </map>
     </option>
   </component>

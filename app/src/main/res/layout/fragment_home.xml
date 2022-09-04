@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment"
+    >
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/tamplate6"
+            >
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/img_slider_utama"
+                android:layout_width="340dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/tamplate1"
+                android:elevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/elektronik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Barang Elektronik"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@+id/btn_tv"
+                app:layout_constraintTop_toBottomOf="@+id/img_slider_utama" />
+
+            <View
+                android:id="@+id/view_menu_elektronik"
+                android:layout_width="340dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custome1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/elektronik" />
+
+            <ImageButton
+                android:id="@+id/btn_tv"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:elevation="5dp"
+                android:background="@drawable/custome2"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/tv2"
+                app:layout_constraintStart_toStartOf="@+id/view_menu_elektronik"
+                app:layout_constraintTop_toTopOf="@+id/view_menu_elektronik" />
+
+            <TextView
+                android:id="@+id/tv_tv"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Tv"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_tv"
+                app:layout_constraintStart_toStartOf="@+id/btn_tv"
+                app:layout_constraintTop_toBottomOf="@+id/btn_tv" />
+
+            <ImageButton
+                android:id="@+id/btn_mesincuci"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:elevation="5dp"
+                android:background="@drawable/custome2"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/mesincuci"
+                app:layout_constraintStart_toEndOf="@+id/btn_tv"
+                app:layout_constraintTop_toTopOf="@+id/view_menu_elektronik" />
+
+            <TextView
+                android:id="@+id/tv_mesincuci"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Mesin Cuci"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_mesincuci"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/btn_mesincuci"
+                app:layout_constraintTop_toBottomOf="@+id/btn_mesincuci" />
+
+            <TextView
+                android:id="@+id/kendaraan"
+                android:layout_width="107dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Kendaraan"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@+id/view_menu_kendaraan"
+                app:layout_constraintTop_toBottomOf="@+id/view_menu_elektronik" />
+
+            <View
+                android:id="@+id/view_menu_kendaraan"
+                android:layout_width="340dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custome1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kendaraan" />
+
+            <ImageButton
+                android:id="@+id/btn_motor"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:elevation="5dp"
+                android:background="@drawable/custome2"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/motorcycle"
+                app:layout_constraintStart_toStartOf="@+id/view_menu_kendaraan"
+                app:layout_constraintTop_toTopOf="@+id/view_menu_kendaraan" />
+
+            <TextView
+                android:id="@+id/tv_motor"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Motor"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_motor"
+                app:layout_constraintStart_toStartOf="@+id/btn_motor"
+                app:layout_constraintTop_toBottomOf="@+id/btn_motor" />
+
+            <ImageButton
+                android:id="@+id/btn_mobil"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:elevation="5dp"
+                android:background="@drawable/custome2"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/car"
+                app:layout_constraintStart_toEndOf="@+id/btn_motor"
+                app:layout_constraintTop_toTopOf="@+id/view_menu_kendaraan" />
+
+            <TextView
+                android:id="@+id/tv_mobil"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Mobil"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_mobil"
+                app:layout_constraintStart_toStartOf="@+id/btn_mobil"
+                app:layout_constraintTop_toBottomOf="@+id/btn_mobil" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

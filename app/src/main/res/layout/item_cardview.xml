@@ -16,7 +16,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="320dp">
 
         <ImageView
             android:id="@+id/img_item_photo"
@@ -25,7 +25,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/tv1"
+            android:src="@drawable/car2"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,8 +56,8 @@
 
         <TextView
             android:id="@+id/tv_jarak"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="20dp"
             android:layout_marginTop="8dp"
             android:text="Jarak"
             android:textColor="@color/purple_700"
@@ -68,12 +68,12 @@
 
         <TextView
             android:id="@+id/tv_alamat"
-            android:layout_width="250dp"
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Alamat"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/tv_jarak"
             app:layout_constraintTop_toBottomOf="@+id/tv_jarak" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

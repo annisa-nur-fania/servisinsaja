@@ -7,6 +7,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,14 +24,27 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
 import com.servisinsaja.v2.Haversine
 import com.servisinsaja.v2.List.ListActivity
 import com.servisinsaja.v2.R
+import com.servisinsaja.v2.Variable
 import com.servisinsaja.v2.databinding.ActivityFormTvBinding
+import cz.msebera.android.httpclient.Header
+import org.json.JSONArray
+import java.lang.Exception
+
 
 class FormTvActivity : AppCompatActivity(), View.OnClickListener,
     OnMapReadyCallback, GoogleMap.OnMarkerClickListener, LocationListener,
     GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+    var mLatitude = 0.0
+    var mLongtitude = 0.0
+    private  lateinit var variabel: Variable
+
+
 
     private lateinit var mMap: GoogleMap
     private lateinit var lastLocation: Location
@@ -48,6 +62,8 @@ class FormTvActivity : AppCompatActivity(), View.OnClickListener,
     private var Arraymerk: ArrayList<String>? = null
     private var Arrayperbaikan: ArrayList<String>? = null
     private lateinit var binding: ActivityFormTvBinding
+
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,14 +103,21 @@ class FormTvActivity : AppCompatActivity(), View.OnClickListener,
         )
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+
         //spinner
         spinnerm = findViewById<Spinner>(R.id.merk_spinner)
         spinnern = findViewById<Spinner>(R.id.jenis_spinner)
 
         Arraymerk = ArrayList()
-        //Arraymerk!!.getdatatv()
+        //!!.getdatatv()
+        Arraymerk!!.add("pilih item")
+        Arraymerk!!.add("LG")
+        Arraymerk!!.add("Thosiba")
+        Arraymerk!!.add("Sharp")
+        Arraymerk!!.add("Polytron")
 
         Arrayperbaikan = ArrayList()
+        Arrayperbaikan!!.add("pilih item")
         Arrayperbaikan!!.add("gambar gelap")
         Arrayperbaikan!!.add("layar bergaris")
         Arrayperbaikan!!.add("mati total")
@@ -132,6 +155,7 @@ class FormTvActivity : AppCompatActivity(), View.OnClickListener,
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         }
 
+
         //intent
         val btnMoveListTvActivity: Button = findViewById(R.id.btn_cari)
         btnMoveListTvActivity.setOnClickListener(this)
@@ -143,7 +167,6 @@ class FormTvActivity : AppCompatActivity(), View.OnClickListener,
         when (p0?.id) {
             R.id.btn_cari -> {
                 val moveIntent = Intent(this@FormTvActivity, ListActivity::class.java)
-
                 startActivity(moveIntent)
             }
         }
@@ -153,8 +176,7 @@ class FormTvActivity : AppCompatActivity(), View.OnClickListener,
         mMap = p0
         mMap.uiSettings.isZoomControlsEnabled = true
         mMap.setOnMapClickListener { this }
-        Toast.makeText(getApplicationContext(), "ini" + setUpMap(), Toast.LENGTH_SHORT)
-            .show()
+        setUpMap()
         p0.setOnMapClickListener { this }
     }
 
@@ -176,29 +198,93 @@ class FormTvActivity : AppCompatActivity(), View.OnClickListener,
         fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
             if (location != null) {
                 lastLocation = location
+                //mLatitude = location.latitude.toDouble()
                 val currentlat = location.latitude
                 val currentlong = location.longitude
 
-                val destlat = -5.35291932213252
-                val deslong = 105.21909873494081
 
-                val jaraknya: Double = Haversine().haversine(currentlat, currentlong, destlat, deslong)
+
+                try {
+                    Variable.latitude = currentlat
+                    Variable.longtitude = currentlong
+                }catch (e: Exception){}
+
+
+                //Toast.makeText(applicationContext, "ini hhhhh"+ Variable.latitude, Toast.LENGTH_SHORT).show()
+
+
+//                 mLongtitude= location.longitude
+////                val jaraknya: Double = Haversine().haversine(currentlat, currentlong, destlat, deslong)
                 val currentLatLong = LatLng(location.latitude, location.longitude)
-
-                //placeMarkerOnMap(currentLatLong)
+//                Toast.makeText(applicationContext, "ini"+currentlat, Toast.LENGTH_SHORT).show()
+//                //placeMarkerOnMap(currentLatLong)
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 12f))
 
             }
         }
     }
 
+    private fun getMerk(){
+        //binding.progressbar.visibility = View.VISIBLE
+        val client = AsyncHttpClient()
+        client.addHeader("User-Agent", "request")
+        client.addHeader("Authorization", "token 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")
+
+        val url = "https://servisinsaja.com/merek.php"
+        client.get(url, object : AsyncHttpResponseHandler() {
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<Header>,
+                responseBody: ByteArray
+            ) {
+                //binding.progressbar.visibility = View.INVISIBLE
+                try {
+                    val results = String(responseBody)
+                    val respondArray = JSONArray(results)
+
+                Toast.makeText(applicationContext, "Apakah result: "+ results.toString(), Toast.LENGTH_LONG).show()
+
+
+                } catch (e: Exception) {
+                    Log.d("Followers", e.message.toString())
+//                    Toast.makeText(
+//                        applicationContext,
+//                        "Exception" + e.message.toString(),
+//                        Toast.LENGTH_LONG
+//                    ).show()
+                }
+
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>,
+                responseBody: ByteArray,
+                error: Throwable
+            ) {
+                //binding.progressbar.visibility = View.INVISIBLE
+                val errorMessage = when (statusCode) {
+                    401 -> "$statusCode : Bad Request 4"
+                    403 -> "$statusCode : Forbidden 4"
+                    404 -> "$statusCode : Not Found 4"
+                    else -> "$statusCode : ${error.message}"
+                }
+                Log.d("onFailure", error.message.toString())
+                Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_LONG).show()
+            }
+        })
+    }
 
     override fun onMarkerClick(p0: Marker): Boolean {
         TODO("Not yet implemented")
     }
 
-    override fun onLocationChanged(p0: Location) {
-        TODO("Not yet implemented")
+    override fun onLocationChanged(location: Location) {
+//        mLatitude = location.latitude
+//        mLongtitude = location.longitude
+//        Toast.makeText(applicationContext, "ini"+mLatitude, Toast.LENGTH_SHORT).show()
+
+
     }
 
     override fun onConnected(p0: Bundle?) {

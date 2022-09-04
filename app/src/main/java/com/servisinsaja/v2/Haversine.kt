@@ -1,7 +1,7 @@
 package com.servisinsaja.v2
 
 
-import com.servisinsaja.v2.Form.FormTvActivity
+
 import kotlin.Double
 
 
@@ -10,7 +10,6 @@ class Haversine  {
         const val R: Double = 6372.8
     }
     fun haversine(latitude1: Double, longitude1: Double, latitude2: Double, longitude2: Double): Double {
-
 
         // LOKASI AWAL GEO
         val currentlat = latitude1
@@ -27,7 +26,6 @@ class Haversine  {
                 Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2)
         val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
         val distance: Double = R * c
-
         return distance
     }
 }

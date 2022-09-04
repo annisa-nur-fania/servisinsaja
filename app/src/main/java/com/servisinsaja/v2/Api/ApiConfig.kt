@@ -1,25 +1,19 @@
 package com.servisinsaja.v2.Api
 
-
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
 
+    private const val BASE_URL = "https://servisinsaja.com/"
 
-  const  val baseUrl ="https://servisinsaja.com/"
-     // "https://rickandmortyapi.com/api/"
-
-
-    fun getRetrofit() : Retrofit{
-        return Retrofit.Builder()
-            .baseUrl(baseUrl)
+    val instance: ApiService by lazy {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
+        retrofit.create(ApiService::class.java)
 
-    fun getService() : ApiService {
-        return getRetrofit().create(ApiService::class.java)
     }
 
 }

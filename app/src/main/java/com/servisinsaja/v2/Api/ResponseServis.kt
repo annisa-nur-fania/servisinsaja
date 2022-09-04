@@ -4,17 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class ResponseServis(
 
-	@field:SerializedName("data")
-	val data: List<DataItem?>?,
-
-	@field:SerializedName("message")
-	val message: String,
-
-	@field:SerializedName("status")
-	val status: Int
+	@field:SerializedName("ResponseServis")
+	val responseServis: List<ResponseServisItem>
 )
 
-data class DataItem(
+data class ResponseServisItem(
 
 	@field:SerializedName("telp")
 	val telp: String,
@@ -35,5 +29,8 @@ data class DataItem(
 	val id: String,
 
 	@field:SerializedName("gambar")
-	val gambar: Any
+	val gambar: Any,
+
+	@field:SerializedName("alamat")
+	val alamat: String
 )

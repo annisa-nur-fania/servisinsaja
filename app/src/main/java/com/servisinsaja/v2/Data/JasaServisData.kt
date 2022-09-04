@@ -12,10 +12,7 @@ object JasaServisData {
         "alamat",
         "alamat"
     )
-    private val jasaImage = intArrayOf(
-        R.drawable.ptp,
-        R.drawable.contoh2
-    )
+
     private val Jarak = doubleArrayOf(
         -5.4404774859843865,
         105.28907580987789
@@ -29,7 +26,6 @@ object JasaServisData {
                 val jasaservis = Servis()
                 jasaservis.name = jasaName[position]
                 jasaservis.alamat = alamat[position]
-                jasaservis.photo = jasaImage[position]
                 jasaservis.jarak = Jarak[position].toString()
 
 

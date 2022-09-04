@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.servisinsaja.v2" >
+    package="com.servisinsaja.v2">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,17 +10,33 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
+        android:name=".Variable"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/iconapp"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/iconapp"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ServisinSajaV2" >
+        android:theme="@style/Theme.ServisinSajaV2">
         <activity
-            android:name=".Detail.DetailTvActivity"
+            android:name=".User.UserActivity"
             android:exported="false" />
         <activity
-            android:name=".Form.FormMesinCuciActivity"
+            android:name=".List.ListMobilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Form.FormMobilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.RegistrasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Detail.DetailTvActivity"
             android:exported="false" />
         <activity
             android:name=".List.ListActivity"
@@ -47,14 +63,15 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MainActivity"
-            android:exported="true" >
+            android:name=".SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".User.LoginActivity" />
     </application>
 
 </manifest>

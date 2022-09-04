@@ -5,195 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/tamplate"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView"
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_buttom"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/button_nav_menu"/>
+
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_buttom"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="600dp"
-                android:layout_marginTop="208dp"
-                android:background="@drawable/custome3"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="-35dp" />
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/img_slider_utama"
-                android:layout_width="340dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/tamplate1"
-                android:elevation="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/elektronik"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="Barang Elektronik"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/btn_tv"
-                app:layout_constraintTop_toBottomOf="@+id/img_slider_utama" />
-
-            <View
-                android:id="@+id/view_menu_elektronik"
-                android:layout_width="340dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/custome1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/elektronik" />
-
-            <ImageButton
-                android:id="@+id/btn_tv"
-                android:layout_width="60dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:elevation="5dp"
-                android:background="@drawable/custome2"
-                android:contentDescription="@null"
-                android:scaleType="centerInside"
-                android:src="@drawable/icon1"
-                app:layout_constraintStart_toStartOf="@+id/view_menu_elektronik"
-                app:layout_constraintTop_toTopOf="@+id/view_menu_elektronik" />
-
-            <TextView
-                android:id="@+id/tv_tv"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Tv"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_tv"
-                app:layout_constraintStart_toStartOf="@+id/btn_tv"
-                app:layout_constraintTop_toBottomOf="@+id/btn_tv" />
-
-            <ImageButton
-                android:id="@+id/btn_mesincuci"
-                android:layout_width="60dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:elevation="5dp"
-                android:background="@drawable/custome2"
-                android:contentDescription="@null"
-                android:scaleType="centerInside"
-                android:src="@drawable/icon1"
-                app:layout_constraintStart_toEndOf="@+id/btn_tv"
-                app:layout_constraintTop_toTopOf="@+id/view_menu_elektronik" />
-
-            <TextView
-                android:id="@+id/tv_mesincuci"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Mesin Cuci"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_mesincuci"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/btn_mesincuci"
-                app:layout_constraintTop_toBottomOf="@+id/btn_mesincuci" />
-
-            <TextView
-                android:id="@+id/kendaraan"
-                android:layout_width="107dp"
-                android:layout_height="21dp"
-                android:layout_marginTop="16dp"
-                android:text="Kendaraam"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="@+id/view_menu_kendaraan"
-                app:layout_constraintTop_toBottomOf="@+id/view_menu_elektronik" />
-
-            <View
-                android:id="@+id/view_menu_kendaraan"
-                android:layout_width="340dp"
-                android:layout_height="96dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/custome1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/kendaraan" />
-
-            <ImageButton
-                android:id="@+id/btn_motor"
-                android:layout_width="60dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:elevation="5dp"
-                android:background="@drawable/custome2"
-                android:contentDescription="@null"
-                android:scaleType="centerInside"
-                android:src="@drawable/icon1"
-                app:layout_constraintStart_toStartOf="@+id/view_menu_kendaraan"
-                app:layout_constraintTop_toTopOf="@+id/view_menu_kendaraan" />
-
-            <TextView
-                android:id="@+id/tv_motor"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Motor"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_motor"
-                app:layout_constraintStart_toStartOf="@+id/btn_motor"
-                app:layout_constraintTop_toBottomOf="@+id/btn_motor" />
-
-            <ImageButton
-                android:id="@+id/btn_mobil"
-                android:layout_width="60dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:elevation="5dp"
-                android:background="@drawable/custome2"
-                android:contentDescription="@null"
-                android:scaleType="centerInside"
-                android:src="@drawable/icon1"
-                app:layout_constraintStart_toEndOf="@+id/btn_motor"
-                app:layout_constraintTop_toTopOf="@+id/view_menu_kendaraan" />
-
-            <TextView
-                android:id="@+id/tv_mobil"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Mobil"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_mobil"
-                app:layout_constraintStart_toStartOf="@+id/btn_mobil"
-                app:layout_constraintTop_toBottomOf="@+id/btn_mobil" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
+        app:navGraph="@navigation/mobile_navigation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

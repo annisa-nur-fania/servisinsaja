@@ -1,31 +1,24 @@
 package com.servisinsaja.v2.Adapter
 
-import android.annotation.SuppressLint
-import android.content.Context
+
+
 import android.content.Intent
-import android.location.Location
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.maps.GoogleMap
-import com.servisinsaja.v2.Api.DataItem
-import com.servisinsaja.v2.Form.FormTvActivity
+import com.servisinsaja.v2.Api.ResponseServisItem
+import com.servisinsaja.v2.Detail.DetailTvActivity
 import com.servisinsaja.v2.Haversine
 import com.servisinsaja.v2.R
+import com.servisinsaja.v2.Variable
+import kotlinx.android.synthetic.main.item_cardview.view.*
+import kotlinx.android.synthetic.main.item_cardview.view.tv_jarak
 import java.text.DecimalFormat
 
-
-class CardViewAdapter ( val listservis: List<DataItem?>?)
+class CardViewAdapter ( val listservis: ArrayList<ResponseServisItem>)
 : RecyclerView.Adapter<CardViewAdapter.CardViewViewHolder>() {
-
-    private lateinit var mMap: GoogleMap
-    private lateinit var lastLocation: Location
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -36,58 +29,52 @@ class CardViewAdapter ( val listservis: List<DataItem?>?)
     }
 
     inner class CardViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
-        var tvName: TextView = itemView.findViewById(R.id.tv_jasa)
-        var tvjarak: TextView = itemView.findViewById(R.id.tv_jarak)
-        var tvalamat : TextView = itemView.findViewById(R.id.tv_alamat)
+//        var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
+//        var tvName: TextView = itemView.findViewById(R.id.tv_jasa)
+//        var tvjarak: TextView = itemView.findViewById(R.id.tv_jarak)
+//        var tvalamat : TextView = itemView.findViewById(R.id.tv_alamat)
 
-    }
+        fun bind (servisResponse: ResponseServisItem) {
+            with(itemView){
+                val des1 = servisResponse.latitude.toDouble()
+                val des2 = servisResponse.longtitude.toDouble()
 
+                val lat1 = Variable.latitude
+                val lat2 = Variable.longtitude
+                val jaraknya: Double = Haversine().haversine(lat1, lat2, des1, des2)
+                Toast.makeText(itemView.context, "lat : $lat1", Toast.LENGTH_SHORT).show()
+                //holder.tvjarak.text = DecimalFormat ("#.##").format(jaraknya) + " KM"
+                val name = " ${servisResponse.namaBengkel}\n"
+                val alamat = " ${servisResponse.alamat}"
+                val texttlp = " ${servisResponse.telp}"
+                val image = "${servisResponse.gambar}"
 
-    @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: CardViewViewHolder, position: Int) {
+                val jarak = DecimalFormat ("#.##").format(jaraknya) + " KM"
+                tv_jasa.text = name
+                tv_jarak.text = jarak
+                tv_alamat.text = alamat
 
-
-
-        holder.tvName.text = listservis?.get(position)?.namaBengkel
-        holder.itemView.setOnClickListener {
-            val name = listservis?.get(position)?.namaBengkel
-            Toast.makeText(holder.itemView.context, "$name", Toast.LENGTH_SHORT).show()
+                val mContext = itemView.context
+                itemView.setOnClickListener {
+                //detail
+                val moveDetail = Intent(mContext, DetailTvActivity::class.java)
+                moveDetail.putExtra(DetailTvActivity.EXTRA_NAME, name)
+                moveDetail.putExtra(DetailTvActivity.EXTRA_JARAK, jarak)
+                moveDetail.putExtra(DetailTvActivity.EXTRA_ALAMAT, alamat)
+                    moveDetail.putExtra(DetailTvActivity.EXTRA_ALAMAT, image)
+                mContext.startActivity(moveDetail)
+            }
+            }
         }
-//        val service = listservis[position]
-//        val (name, alamat,jarak) = listservis[position]
-//
-//        mengambil hasil rumus haversine
-//        val jaraknya = FormTvActivity().jaraknya
-//        Glide.with(holder.itemView.context)
-//            .load(service.photo)
-//            .apply(RequestOptions().override(350, 550))
-//            .into(holder.imgPhoto)
-//
-//        holder.tvName.text = service.name
-//        holder.tvalamat.text = service.alamat
-//        holder.tvjarak.text = service.jarak + " KM"
-//        //holder.tvjarak.text = DecimalFormat ("#.##").format(jaraknya) + " KM"
-//        val mContext = holder
-//            .itemView.context
-//        holder.itemView.setOnClickListener {
-//            //detail
-//            val moveDetail = Intent(mContext, DetailTvActivity::class.java)
-//            moveDetail.putExtra(DetailTvActivity.EXTRA_NAME, name)
-//            moveDetail.putExtra(DetailTvActivity.EXTRA_JARAK, jarak)
-//            moveDetail.putExtra(DetailTvActivity.EXTRA_ALAMAT, alamat)
-//            moveDetail.putExtra(DetailTvActivity.EXTRA_PHOTO, service.photo)
-//            mContext.startActivity(moveDetail)
-//        }
+
     }
 
 
-    override fun getItemCount(): Int {
-        if (listservis != null){
-            return  listservis.size
+    override fun onBindViewHolder(holder: CardViewAdapter.CardViewViewHolder, position: Int) {
 
-        }
-        return  0
-       // return listservis.size
+        holder.bind(listservis[position])
     }
+
+
+    override fun getItemCount(): Int  = listservis.size
 }
